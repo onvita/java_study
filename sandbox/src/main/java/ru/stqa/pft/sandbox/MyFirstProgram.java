@@ -3,9 +3,21 @@ package ru.stqa.pft.sandbox;
 public class MyFirstProgram {
 
   public static void main(String[] args) {
-    System.out.println("Hello,"+" world!");
- int l=8;
- int s=l*l;
-    System.out.println("РџР»РѕС‰Р°РґСЊ РєРІР°РґСЂР°С‚Р° СЃРѕ СЃС‚РѕСЂРѕРЅРѕР№ "+ l + "=" + s);
+    hello("world");
+    hello("user");
+    hello("Ya");
+
+    Square s=new Square(5);
+    System.out.println("Площадь Квадрата со стороной "+s.l+"="+s.area());
+
+    Rectangle r = new Rectangle(4,6);
+    System.out.println("Площадь Прямоугольника со сторонами "+r.a+" и " + r.b +"="+r.area());
   }
+
+  public static void hello(String somebody )
+  {        System.out.println("Hello,"+ somebody +"!");  }
+
+
+
+
 }

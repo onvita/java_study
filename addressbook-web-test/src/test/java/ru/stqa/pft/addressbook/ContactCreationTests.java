@@ -30,7 +30,7 @@ public class ContactCreationTests {
   @Test
   public void testContactCreation() throws Exception {
     initContactCreation(); // инициализировать создание нового контакта
-    fillContactForm(); // заполнитьформу данными
+    fillContactForm(new ContactData("Вася", "", "Васечкин", "Ул.Ленина 28", "44-44-44", "+7 444-444-44-44", "" , "ссс@mail.ru", "", "")); // заполнить форму данными
     submitContaktCreation();// подтвердить создание контакта
   }
 
@@ -40,37 +40,37 @@ public class ContactCreationTests {
   }
 
   // Заполнение полей на форме создания нового контакта
-  private void fillContactForm() {
+  private void fillContactForm(ContactData contactData) {
     wd.findElement(By.name("firstname")).click();
     wd.findElement(By.name("firstname")).clear();
-    wd.findElement(By.name("firstname")).sendKeys("Тимофей2");
+    wd.findElement(By.name("firstname")).sendKeys(contactData.getFirstname());
     wd.findElement(By.name("middlename")).click();
     wd.findElement(By.name("middlename")).clear();
-    wd.findElement(By.name("middlename")).sendKeys("ИВанович");
+    wd.findElement(By.name("middlename")).sendKeys(contactData.getMiddlename());
     wd.findElement(By.name("lastname")).click();
     wd.findElement(By.name("lastname")).clear();
-    wd.findElement(By.name("lastname")).sendKeys("Тимофеев");
+    wd.findElement(By.name("lastname")).sendKeys(contactData.getLastname());
     wd.findElement(By.name("address")).click();
     wd.findElement(By.name("address")).clear();
-    wd.findElement(By.name("address")).sendKeys("Ул.Ленина 28");
+    wd.findElement(By.name("address")).sendKeys(contactData.getAddress());
     wd.findElement(By.name("home")).click();
     wd.findElement(By.name("home")).clear();
-    wd.findElement(By.name("home")).sendKeys("44-44-44");
+    wd.findElement(By.name("home")).sendKeys(contactData.getHome());
     wd.findElement(By.name("mobile")).click();
     wd.findElement(By.name("mobile")).clear();
-    wd.findElement(By.name("mobile")).sendKeys("+7 444-444-44-44");
+    wd.findElement(By.name("mobile")).sendKeys(contactData.getMobile());
     wd.findElement(By.name("work")).click();
     wd.findElement(By.name("work")).clear();
-    wd.findElement(By.name("work")).sendKeys("55-55-55");
+    wd.findElement(By.name("work")).sendKeys(contactData.getWork());
     wd.findElement(By.name("email")).click();
     wd.findElement(By.name("email")).clear();
-    wd.findElement(By.name("email")).sendKeys("bbb@mail.ru");
+    wd.findElement(By.name("email")).sendKeys(contactData.getEmail());
     wd.findElement(By.name("email2")).click();
     wd.findElement(By.name("email2")).clear();
-    wd.findElement(By.name("email2")).sendKeys("bbb2@mail.ru");
+    wd.findElement(By.name("email2")).sendKeys(contactData.getEmail2());
     wd.findElement(By.name("email3")).click();
     wd.findElement(By.name("email3")).clear();
-    wd.findElement(By.name("email3")).sendKeys("bbb3@mail.ru");
+    wd.findElement(By.name("email3")).sendKeys(contactData.getEmail3());
   }
 
   // подверждение создания нового контакта нажатием кнопки подтверждения
@@ -98,9 +98,6 @@ public class ContactCreationTests {
     } catch (NoAlertPresentException e) {
       return false;
     }
-
-
-
 
 
   }

@@ -1,28 +1,29 @@
-package ru.stqa.pft.addressbook;
+package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.concurrent.TimeUnit;
 
-public class ApplocationManager {
+public class ApplicationManager {
   private WebDriver wd;
 
-  protected void init() {
+  public void init() {
     wd = new FirefoxDriver();
     wd.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     wd.get("http://localhost/addressbook/");
     login("admin", "secret");
   }
 
-  protected void stop() {
+  public void stop() {
     wd.quit();
   }
 
-  private boolean isElementPresent(By by) {
+  public boolean isElementPresent(By by) {
     try {
       wd.findElement(by);
       return true;
@@ -31,7 +32,7 @@ public class ApplocationManager {
     }
   }
 
-  private boolean isAlertPresent() {
+  public boolean isAlertPresent() {
     try {
       wd.switchTo().alert();
       return true;
@@ -41,7 +42,7 @@ public class ApplocationManager {
   }
 
   // Метод авторизации
-  private void login(String username, String password) {
+  public void login(String username, String password) {
     wd.findElement(By.name("user")).click();
     wd.findElement(By.name("user")).clear();
     wd.findElement(By.name("user")).sendKeys(username);
@@ -52,17 +53,17 @@ public class ApplocationManager {
   }
 
   // Метода для перехода на стр. групп
-  protected void gotoGroupPage() {
+  public void gotoGroupPage() {
     wd.findElement(By.linkText("groups")).click();
   }
 
   // Метод для перехода на стр. создания новой группы ( Нажатие кнопки new)
-  protected void initGroupCreation() {
+  public void initGroupCreation() {
     wd.findElement(By.name("new")).click();
   }
 
   // Заполнить поля  на форме создания группы
-  protected void fillGroupForm(GroupData groupDat) {
+  public void fillGroupForm(GroupData groupDat) {
     wd.findElement(By.name("group_name")).click();
     wd.findElement(By.name("group_name")).clear();
     wd.findElement(By.name("group_name")).sendKeys(groupDat.getName());
@@ -75,22 +76,22 @@ public class ApplocationManager {
   }
 
   // Метод - подтвержаем создание новой группы- (нажатие кнопки подтверждения)
-  protected void submitGroupCreation() {
+  public void submitGroupCreation() {
     wd.findElement(By.name("submit")).click();
   }
 
   // Метод возврата на страницу групп
-  protected void returnToGroupPage() {
+  public void returnToGroupPage() {
     wd.findElement(By.linkText("group page")).click();
   }
 
   // Метод Удалить выбранные группы
-  protected void deleteSelectedGroups() {
+  public void deleteSelectedGroups() {
     wd.findElement(By.name("delete")).click();
   }
 
   //Метод Выбрать группу произвольную
-  protected void selectGroup() {
+  public void selectGroup() {
     wd.findElement(By.name("selected[]")).click();
   }
 }

@@ -15,7 +15,7 @@ public class ContactHelper  extends HelperBase{
     click(By.linkText("add new"));
   }
 
-  // Заполнение полей на форме создания нового контакта
+  // Заполнение полей на форме создания\редактирования контакта
   public void fillContactForm(ContactData contactData) {
     type(By.name("firstname"), contactData.getFirstname());
     type(By.name("middlename"), contactData.getMiddlename());
@@ -34,5 +34,20 @@ public class ContactHelper  extends HelperBase{
   public void submitContaktCreation() {
     click(By.xpath("(//input[@name='submit'])[2]"));
   }
+
+  // Нажатие кнопки редактирования для контакта (переход на страницу релактирования соответсвующего контакта из списка контактов)
+  public void submitContaktEdit() {
+    click(By.xpath("(//img[@alt='Edit'])[4]"));
+  }
+// Подтверждение редактирования контакта ( нажатие кнопки Update на стр. редактирования контакта)
+  public void submitContactUpdate() {
+    click(By.name("update"));
+  }
+
+  // Метод возврата на страницу со списком контактов
+  public void returnToHomePage() {
+    click(By.linkText("home page"));
+  }
+
 
 }

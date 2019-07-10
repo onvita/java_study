@@ -58,4 +58,14 @@ public class ContactHelper  extends HelperBase{
   public void submitContactModifiy() {
     click(By.name("modifiy"));
   }
+
+  //Метод Выбрать контакт с конкретным ид
+  public void selectContactById(String ContactID) {
+    click(By.id(ContactID));
+  }
+  // Нажатие Delete для контакта
+  public void submitContactDelite()  {
+    click(By.xpath("//input[@value='Delete']")); }
+
+
 }

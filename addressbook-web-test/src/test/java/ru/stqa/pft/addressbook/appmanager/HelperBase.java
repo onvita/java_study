@@ -23,6 +23,8 @@ public class HelperBase {
     wd.findElement(locator).click();
   }
 
+
+
   public boolean isAlertPresent() {
     try {
       wd.switchTo().alert();

@@ -20,7 +20,7 @@ public class ContactHelper  extends HelperBase{
     type(By.name("firstname"), contactData.getFirstname());
     type(By.name("middlename"), contactData.getMiddlename());
     type(By.name("lastname"), contactData.getLastname());
-    type(By.name("address"), contactData.getLastname());
+    type(By.name("address"), contactData.getAddress());
     type(By.name("home"), contactData.getHome());
     type(By.name("mobile"),contactData.getMobile());
     type(By.name("work"),contactData.getWork());

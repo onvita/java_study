@@ -37,9 +37,7 @@ public class ContactData {
     return lastname;
   }
 
-  public String getAddress() {
-    return address;
-  }
+  public String getAddress() {return address; }
 
   public String getHome() {
     return home;

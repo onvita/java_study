@@ -14,9 +14,15 @@ public class HelperBase {
   }
 
   protected void type(By locator, String text) {
-    click(locator);
-    wd.findElement(locator).clear();
-    wd.findElement(locator).sendKeys(text);
+     click(locator);
+    // Далее, если в поле уже введено нужное значение, то с этим полем ничего делать не нужно, подробнее
+    if (text !=null) // если текст есть
+      { String existingText = wd.findElement(locator).getAttribute("value"); // извлекаем из поля то значение, которое в нем хранится  в переменную existingText
+           if (!text.equals(existingText)) { // если не верно, что текст переданный в метод (через text) совпадает с уже существующим в нем текстом (только что извлекли)
+               wd.findElement(locator).clear(); // очищаем его
+               wd.findElement(locator).sendKeys(text); // и заполняем новым значением
+              }// иначе (если текст совпадает) ничего не делаем, оставляем как было
+      }// Иначе (текст пустой) ничего не даелаем, оставляем как было
   }
 
   protected void click(By locator) {

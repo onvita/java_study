@@ -10,7 +10,7 @@ public class ContactDeletionByIdTests extends TestBase{
 
   public void testContactDeletionById ()
   {
-    app.getContactHelper().selectContactById("22");
+    app.getContactHelper().selectContactById("25");
     app.getContactHelper().submitContactDelite();
     app.closeAlertOk();
   }

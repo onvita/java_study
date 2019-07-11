@@ -11,7 +11,7 @@ public class ContactEditTests extends TestBase {
 
   public void testContactEdit ()
   { app.getContactHelper().submitContaktEdit();
-    app.getContactHelper().fillContactForm(new ContactData("Васяизbp", "", "Васечкиниз", "Ул.Ленина 28из", "44-44-44", "+7 444-444-44-44", "" , "ссс@mail.ru", "", ""));
+    app.getContactHelper().fillContactForm(new ContactData("Борис", "", "Васечкиниз", "Ул.Ленина 28из", "44-44-44", "+7 444-444-44-44", "" , "ссс@mail.ru", "", ""));
     app.getContactHelper().submitContactUpdate();
     app.getContactHelper().returnToHomePage();
   }

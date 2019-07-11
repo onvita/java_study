@@ -6,12 +6,12 @@ import ru.stqa.pft.addressbook.model.ContactData;
 public class ContactEditTests extends TestBase {
 
   @Test
-  // Тест проверяет редактирование контакта через форму редактирования, переход к которой осуществляется
-  // непосредственно из списка контактов нажатием кнопки Edit
+  // РўРµСЃС‚ РїСЂРѕРІРµСЂСЏРµС‚ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёРµ РєРѕРЅС‚Р°РєС‚Р° С‡РµСЂРµР· С„РѕСЂРјСѓ СЂРµРґР°РєС‚РёСЂРѕРІР°РЅРёСЏ, РїРµСЂРµС…РѕРґ Рє РєРѕС‚РѕСЂРѕР№ РѕСЃСѓС‰РµСЃС‚РІР»СЏРµС‚СЃСЏ
+  // РЅРµРїРѕСЃСЂРµРґСЃС‚РІРµРЅРЅРѕ РёР· СЃРїРёСЃРєР° РєРѕРЅС‚Р°РєС‚РѕРІ РЅР°Р¶Р°С‚РёРµРј РєРЅРѕРїРєРё Edit
 
   public void testContactEdit ()
   { app.getContactHelper().submitContaktEdit();
-    app.getContactHelper().fillContactForm(new ContactData("Васяизbp", "", "Васечкиниз", "Ул.Ленина 28из", "44-44-44", "+7 444-444-44-44", "" , "ссс@mail.ru", "", ""));
+    app.getContactHelper().fillContactForm(new ContactData("Р’Р°СЃСЏРёР·bp", "", "Р’Р°СЃРµС‡РєРёРЅРёР·", "РЈР».Р›РµРЅРёРЅР° 28РёР·", "44-44-44", "+7 444-444-44-44", "" , "СЃСЃСЃ@mail.ru", "", ""));
     app.getContactHelper().submitContactUpdate();
     app.getContactHelper().returnToHomePage();
   }

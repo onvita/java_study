@@ -8,9 +8,9 @@ public class ContactCreationTests extends TestBase {
 
   @Test
   public void testContactCreation() throws Exception {
-    app.getContactHelper().initContactCreation(); // инициализировать создание нового контакта
-    app.getContactHelper().fillContactForm(new ContactData("Петр4", "", "Петров4", "Ул.Ленина 28", "44-44-44", "+7 444-444-44-44", "" , "ссс@mail.ru", "", "")); // заполнить форму данными
-    app.getContactHelper().submitContaktCreation  ();// подтвердить создание контакта
+    app.getContactHelper().initContactCreation(); // РёРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°С‚СЊ СЃРѕР·РґР°РЅРёРµ РЅРѕРІРѕРіРѕ РєРѕРЅС‚Р°РєС‚Р°
+    app.getContactHelper().fillContactForm(new ContactData("РџРµС‚СЂ4", "", "РџРµС‚СЂРѕРІ4", "РЈР».Р›РµРЅРёРЅР° 28", "44-44-44", "+7 444-444-44-44", "" , "СЃСЃСЃ@mail.ru", "", "")); // Р·Р°РїРѕР»РЅРёС‚СЊ С„РѕСЂРјСѓ РґР°РЅРЅС‹РјРё
+    app.getContactHelper().submitContaktCreation  ();// РїРѕРґС‚РІРµСЂРґРёС‚СЊ СЃРѕР·РґР°РЅРёРµ РєРѕРЅС‚Р°РєС‚Р°
   }
 
 

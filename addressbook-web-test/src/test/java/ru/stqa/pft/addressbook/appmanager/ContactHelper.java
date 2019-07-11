@@ -32,12 +32,12 @@ public class ContactHelper  extends HelperBase{
 
   // подверждение создани€ нового контакта нажатием кнопки подтверждени€
   public void submitContaktCreation() {
-    click(By.xpath("(//input[@name='submit'])[2]"));
+    click(By.xpath("(//input[@name='submit'])[1]"));
   }
 
   // Ќажатие кнопки редактировани€ дл€ контакта (переход на страницу релактировани€ соответсвующего контакта из списка контактов)
   public void submitContaktEdit() {
-    click(By.xpath("(//img[@alt='Edit'])[4]"));
+    click(By.xpath("(//img[@alt='Edit'])[1]"));
   }
 // ѕодтверждение редактировани€ контакта ( нажатие кнопки Update на стр. редактировани€ контакта)
   public void submitContactUpdate() {
@@ -51,7 +51,7 @@ public class ContactHelper  extends HelperBase{
 
   // ћетод перехода на страницу просмотра контакта, нажатием кнопки просмотр (или детально) в списке контактов
   public void gotoContaktViewPage() {
-    click(By.xpath("(//img[@alt='Details'])[5]"));
+    click(By.xpath("(//img[@alt='Details'])[1]"));
   }
 
   // ѕереход к странице модификации контакта ( нажатие кнопки Modify на стр. просмотра контакта)
@@ -63,9 +63,14 @@ public class ContactHelper  extends HelperBase{
   public void selectContactById(String ContactID) {
     click(By.id(ContactID));
   }
+
   // Ќажатие Delete дл€ контакта
   public void submitContactDelite()  {
     click(By.xpath("//input[@value='Delete']")); }
 
+  //ћетод  в списке контактов произвольный контатк
+  public void selectContactInList () {
+    click(By.name("selected[]"));
+  }
 
 }

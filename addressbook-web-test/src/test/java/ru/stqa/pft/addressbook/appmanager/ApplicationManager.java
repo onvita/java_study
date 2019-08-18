@@ -44,8 +44,8 @@ public class ApplicationManager {
   }
 
   public void closeAlertOk ()
-  {
-    wd.switchTo().alert().accept();
+ {
+  wd.switchTo().alert().accept();
   }
 
    public GroupHelper getGroupHelper() {

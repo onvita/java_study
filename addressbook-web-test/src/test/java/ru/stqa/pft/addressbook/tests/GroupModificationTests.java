@@ -7,6 +7,10 @@ public class GroupModificationTests extends TestBase {
   @Test
   public void testGroupModification ()
   { app.getNavigationHelper().gotoGroupPage();
+    // Перед выбором группы  проверяем, есль ли группа, если нет - то вызываем созданеи группы
+    if (! app.getGroupHelper().isThereAGroup()) {
+      app.getGroupHelper().crateGroup(new GroupData("test31", null, null)); }
+    // и только после этого уже выбираем группу для модификации
     app.getGroupHelper().selectGroup();
     app.getGroupHelper().initGroupModification();
     app.getGroupHelper().fillGroupForm(new GroupData("test11is", "test12is", "test13is"));

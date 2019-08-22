@@ -51,4 +51,16 @@ public class GroupHelper extends HelperBase {
   public void submitGroupModification() {
     click(By.name("update"));
   }
+
+  // Метод создания группы
+  public void crateGroup(GroupData group) {
+    initGroupCreation();
+    fillGroupForm(group);
+    submitGroupCreation();
+    returnToGroupPage();
+  }
+// Метод проверяет, есть ли элемент  выбора  на странице ( есть ли группы)
+  public boolean isThereAGroup() {
+    return  isElementPresent(By.name("selected[]"));
+  }
 }

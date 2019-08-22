@@ -39,12 +39,12 @@ public class HelperBase {
       return false;
     }
   }
-
-  public boolean isElementPresent(By by) {
+// Проверка наличия элемента на странице
+  public boolean isElementPresent(By locator) {
     try {
-      wd.findElement(by);
+      wd.findElement(locator); // ищем элемент
       return true;
-    } catch (NoSuchElementException e) {
+    } catch (NoSuchElementException ex) { // исключение NoSuchElementException - нет такого элемента
       return false;
     }
   }

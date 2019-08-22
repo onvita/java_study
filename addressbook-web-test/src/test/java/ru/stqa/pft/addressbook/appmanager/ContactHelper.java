@@ -2,6 +2,8 @@ package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 
 public class ContactHelper  extends HelperBase{
@@ -16,7 +18,8 @@ public class ContactHelper  extends HelperBase{
   }
 
   // Заполнение полей на форме создания\редактирования контакта
-  public void fillContactForm(ContactData contactData) {
+  // Параметр cration определяет, это форма создания контакта или можификации - true - значит создания
+  public void fillContactForm(ContactData contactData, boolean cration) {
     type(By.name("firstname"), contactData.getFirstname());
     type(By.name("middlename"), contactData.getMiddlename());
     type(By.name("lastname"), contactData.getLastname());
@@ -28,6 +31,13 @@ public class ContactHelper  extends HelperBase{
     type(By.name("email2") ,contactData.getEmail2());
     type(By.name("email3") ,contactData.getEmail3());
 
+    // Заполняем группу
+    // Чтобы выбрать элемент из выпадающего списка используется Вспомогательный класс select
+    // Параметр класса, элемент найденный на стр. приложения
+    if (cration) // Если это форма контакта - элемент должен быть, и нужно выбирать эл. из выпадающего списка
+            {  new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+     } else   // иначе  это форма модификации и элемента быть не должно - проверяем это
+            {  Assert.assertFalse(isElementPresent(By.name("new_group"))); }
   }
 
   // подверждение создания нового контакта нажатием кнопки подтверждения

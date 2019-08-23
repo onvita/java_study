@@ -88,6 +88,12 @@ public class ContactHelper  extends HelperBase{
     initContactCreation(); // инициализировать создание нового контакта
     fillContactForm(contact, cration); // заполнить форму данными
     submitContaktCreation();// подтвердить создание контакта
+    returnToHomePage();// вернуться
+  }
+
+  // Метод проверяет, есть ли на странице контакт, для которого можно перейти на стрницу просмотра
+  public boolean isThereAContactForView() {
+    return  isElementPresent(By.xpath("(//img[@alt='Details'])[1]"));
   }
 
 }

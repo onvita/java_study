@@ -10,7 +10,12 @@ public class ContactEditTests extends TestBase {
   // непосредственно из списка контактов нажатием кнопки Edit
 
   public void testContactEdit ()
-  { app.getContactHelper().submitContaktEdit();
+  {  app.getNavigationHelper().gotoHomePage();
+    // Перед выбором контакта  проверяем, есль ли контакт
+    if (! app.getContactHelper().isThereAContact()) { //  если нет - то вызываем созданеи контакта
+      app.getContactHelper().crateContact(new ContactData("Basy", "", "Antonov", "strit", "334-44-44", "+7 444-444-44-44", "" , "ссс@mail.ru", "", "", "test11is"), true);
+    } // и только после этого переходим на стр. редактирования контакта
+    app.getContactHelper().submitContaktEdit();
     app.getContactHelper().fillContactForm(new ContactData("Борисcccc", "", "Петров4", "nbmnbnbnbnv", "44-44-44", "+7 444-444-44-44", "" , "ссс@mail.ru", "", "", null), false);
     app.getContactHelper().submitContactUpdate();
     app.getContactHelper().returnToHomePage();

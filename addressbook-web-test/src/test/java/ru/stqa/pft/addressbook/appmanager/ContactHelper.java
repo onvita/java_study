@@ -83,4 +83,11 @@ public class ContactHelper  extends HelperBase{
     click(By.name("selected[]"));
   }
 
+  // Метод создания контакта
+  public void crateContact(ContactData contact, boolean cration) {
+    initContactCreation(); // инициализировать создание нового контакта
+    fillContactForm(contact, cration); // заполнить форму данными
+    submitContaktCreation();// подтвердить создание контакта
+  }
+
 }

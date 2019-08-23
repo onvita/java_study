@@ -12,8 +12,8 @@ public class ContactModificationTests extends TestBase {
   {
    app.getNavigationHelper().gotoHomePage();
 
-    // Перед выбором контакта  проверяем, есль ли контакт ( есть ли кнопка Details на странице)
-    if (! app.getContactHelper().isThereAContactForView()) { //  если нет - то вызываем созданеи контакта
+    // Перед выбором контакта  проверяем, есль ли контакт
+    if (! app.getContactHelper().isThereAContact()) { //  если нет - то вызываем созданеи контакта
         app.getContactHelper().crateContact(new ContactData("Basy", "", "Antonov", "strit", "334-44-44", "+7 444-444-44-44", "" , "ссс@mail.ru", "", "", "test11is"), true);
     }
     // и только после этого переходим на стр. просмотра контакта

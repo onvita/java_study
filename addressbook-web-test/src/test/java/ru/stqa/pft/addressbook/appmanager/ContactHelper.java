@@ -91,9 +91,8 @@ public class ContactHelper  extends HelperBase{
     returnToHomePage();// вернуться
   }
 
-  // Метод проверяет, есть ли на странице контакт, для которого можно перейти на стрницу просмотра
-  public boolean isThereAContactForView() {
-    return  isElementPresent(By.xpath("(//img[@alt='Details'])[1]"));
+  // Метод проверяет, есть ли  в таблице строчки
+  public boolean isThereAContact() {
+      return  isElementPresent(By.name("selected[]"));
   }
-
 }

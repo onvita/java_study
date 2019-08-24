@@ -14,7 +14,7 @@ public class GroupDeletionTests extends TestBase {
     if (! app.getGroupHelper().isThereAGroup()) {
         app.getGroupHelper().crateGroup(new GroupData("test31", null, null)); }
     // и только после этого уже выбираем группу для удаления
-    app.getGroupHelper().selectGroup();
+    app.getGroupHelper().selectGroup(0);
     app.getGroupHelper().deleteSelectedGroups();
     app.getGroupHelper().returnToGroupPage();
     int after=app.getGroupHelper().getGroupCount();

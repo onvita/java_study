@@ -40,8 +40,10 @@ public class GroupHelper extends HelperBase {
   }
 
   //Метод Выбрать группу произвольную
-  public void selectGroup() {
-    click(By.name("selected[]"));
+  public void selectGroup(int index) {
+    // click(By.name("selected[]")); до добавления индекса было так, но правильнее работать со списком элементов
+    // Находим все элементы по локатору By.name("selected[]"), среди них выбираем нужный по индексу и по этому элементу выполнить клик
+    wd.findElements(By.name("selected[]")).get(index).click();
   }
 
   public void initGroupModification() {

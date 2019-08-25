@@ -19,11 +19,15 @@ public class GroupDeletionTests extends TestBase {
     List<GroupData> before=app.getGroupHelper().getGroupList();
 
     // и только после этого уже выбираем группу для удаления
-    app.getGroupHelper().selectGroup(0);
+    app.getGroupHelper().selectGroup(before.size()-1);
     app.getGroupHelper().deleteSelectedGroups();
     app.getGroupHelper().returnToGroupPage();
     List<GroupData> after=app.getGroupHelper().getGroupList();
+    // сравниваем количество
     Assert.assertEquals(after.size(), before.size() - 1 );
+    // перед сравнением списков из старого нужно удалить удаленный в тесте элемент, по индексу
+    before.remove(before.size()-1);
+    Assert.assertEquals(before, after);
   }
 
 

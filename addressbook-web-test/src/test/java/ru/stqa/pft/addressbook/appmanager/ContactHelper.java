@@ -2,9 +2,14 @@ package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.GroupData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ContactHelper  extends HelperBase{
   //
@@ -78,9 +83,9 @@ public class ContactHelper  extends HelperBase{
   public void submitContactDelite()  {
     click(By.xpath("//input[@value='Delete']")); }
 
-  //Метод  чекает в списке контактов произвольный контатк
-  public void selectContactInList () {
-    click(By.name("selected[]"));
+  //Метод  чекает в списке контактов  контакт с индексом index
+  public void selectContactInList (int index) {
+     wd.findElements(By.name("selected[]")).get(index).click();
   }
 
   // Метод создания контакта
@@ -95,4 +100,32 @@ public class ContactHelper  extends HelperBase{
   public boolean isThereAContact() {
       return  isElementPresent(By.name("selected[]"));
   }
+
+  public int getContactCount() {
+    // findElements возвращает список элементов, объект типа list
+    return wd.findElements(By.name("selected[]")).size();
+  }
+
+  // Метод находит на стр. контакты и создает соответсвующий список
+  public List<ContactData> getContactList() {
+    // создаем список, который будем заполнять
+    List<ContactData> contacts=new ArrayList<ContactData>(); // ArrayList - т.к нужно указать конкретный класс, который реализует интерфейс List
+   // получаем список объектов типа вебэлемент
+    List<WebElement> elements =wd.findElements(By.name("entry")); // найти все элементы, которые имеют name("entry")
+   // нужно по элементам пройти в цикле и выполнить действия
+    for (WebElement element: elements) {                                 // element  пробегает по списку elements
+      String firstname =element.findElement(By.tagName("td[2]")).getText();
+      String lastname =element.findElement(By.tagName("td[3]")).getText();
+      int id=Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id")); // достаем ид
+
+      //  создаем объект типа ContactData, сравнение будет по ид и имени, поэтому уже в спсике другие данные
+      // объекта ContactData не нужны, их выставляем null
+      ContactData contact = new ContactData(id, firstname, null, lastname, null, null, null, null , null, null, null, null);
+      contacts.add(contact);                                                 // добавляем созданный объект в список
+    }
+
+    return  contacts; // Метод вернет список контактов
+
+  }
+
 }

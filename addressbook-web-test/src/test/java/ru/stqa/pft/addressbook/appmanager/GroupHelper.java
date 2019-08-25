@@ -77,6 +77,7 @@ public class GroupHelper extends HelperBase {
 
   }
 
+  // Метод находит на стр. группы и создает соответсвующий список групп
   public List<GroupData> getGroupList() {
  // создаем список, который будем заполнять
     List<GroupData> groups=new ArrayList<GroupData>(); // ArrayList - т.к нужно указать конкретный класс, который реализует интерфейс List

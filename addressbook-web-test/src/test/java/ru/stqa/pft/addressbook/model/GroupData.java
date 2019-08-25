@@ -2,11 +2,6 @@ package ru.stqa.pft.addressbook.model;
 //  класс для группы
 public class GroupData {
   private int id;    // final убран, чтобы можно было менять через setter
-
-  public void setId(int id) {
-    this.id = id;
-  }
-
   private final String name;
   private final String header;
   private final String footer;
@@ -20,14 +15,15 @@ public class GroupData {
     this.footer = footer;
   }
 
-
-
-
   public GroupData(String name, String header, String footer) {
     this.id = Integer.MAX_VALUE;
     this.name = name;
     this.header = header;
     this.footer = footer;
+  }
+
+  public void setId(int id) {
+    this.id = id;
   }
 
   public int getId() {

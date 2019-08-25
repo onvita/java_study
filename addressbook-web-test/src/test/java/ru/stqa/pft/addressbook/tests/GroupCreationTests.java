@@ -20,19 +20,17 @@ public class GroupCreationTests extends TestBase {
     List<GroupData> after=app.getGroupHelper().getGroupList();
     Assert.assertEquals(after.size(), before.size() + 1 ); // сравниваем размер списков до и после добавления
 
-//  Записываем идентификатор только созданный - это максимальный из имеющихся в новом списке
-    // Список превращаем в поток, after.stream()
-    // по этому потоку пробегается функция-сравниватель и находится максимальный элемент max
-    // при этом сравниваются объекты типа GroupData (o1, o2) путем сравнения их идентификаторов Integer.compare(o1.getId(), o2.getId()
-    // на выходе будет максимальный объект (группа с максимальным идентификатором) get()
-    // берем ее идентификатор getId()
-    // всю конструкцию вызываем в group.setId(...)
-    group.setId(after.stream().max((o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId());
 
     // меняем старый список - добавляем новое
     before.add(group);
-    // создаем множества из списков и сравниваем их
-    Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
+
+    // Сортируем оба списка
+    Comparator<? super GroupData> byId=(g1,g2)->Integer.compare(g1.getId(), g2.getId());
+    before.sort(byId);
+    after.sort(byId);
+    // сравниваем списки напрямую, т.к. они оба упорядочены одинаково
+    Assert.assertEquals(before, after);
+
 
   }
 

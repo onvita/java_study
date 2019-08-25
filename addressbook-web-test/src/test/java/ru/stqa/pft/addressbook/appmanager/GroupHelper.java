@@ -3,7 +3,11 @@ package ru.stqa.pft.addressbook.appmanager;
 import com.sun.javafx.binding.ExpressionHelperBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import ru.stqa.pft.addressbook.model.GroupData;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GroupHelper extends HelperBase {
 
@@ -70,6 +74,23 @@ public class GroupHelper extends HelperBase {
 
     // findElements возвращает список элементов, объект типа list
     return wd.findElements(By.name("selected[]")).size();
+
+  }
+
+  public List<GroupData> getGroupList() {
+ // создаем список, который будем заполнять
+    List<GroupData> groups=new ArrayList<GroupData>(); // ArrayList - т.к нужно указать конкретный класс, который реализует интерфейс List
+// получаем список объектов типа вебэлемент
+    List<WebElement> elements =wd.findElements(By.cssSelector("span.group")); // найти все элементы, которые имеют тег span и класс   group
+// нужно по элементам пройти в цикле и выполнить действия
+    for (WebElement element: elements) {                                 // element  пробегает по списку elements
+      String name =element.getText();                                    // из каждого получаем текст - имя группы
+      GroupData group = new GroupData(name, null, null);  //  создаем объект типа GroupData
+      groups.add(group);                                                 // добавляем созданный объект в список
+    }
+
+
+    return  groups; // Метод вернет список групп
 
   }
 }

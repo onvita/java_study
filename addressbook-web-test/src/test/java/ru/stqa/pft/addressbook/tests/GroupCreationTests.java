@@ -14,7 +14,9 @@ public class GroupCreationTests extends TestBase {
   @Test
   public void testGroupCreation() throws Exception {
     app.getNavigationHelper().gotoGroupPage();
+
     List<GroupData> before=app.getGroupHelper().getGroupList();     // before и after - будут содержать список элементов- список объектов типа GroupData
+
     GroupData group = new GroupData("test44", null, null);
     app.getGroupHelper().crateGroup(group);
     List<GroupData> after=app.getGroupHelper().getGroupList();

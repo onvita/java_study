@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ContactModificationTests extends TestBase {
 
-  @Test
+  @Test (enabled = false)
   // Тест проверяет редактирование контакта через форму модификации, переход к которой осуществляется
   // со страницы просмотра контакта,нажатием кнопки Modify
   public void testContactModification ()

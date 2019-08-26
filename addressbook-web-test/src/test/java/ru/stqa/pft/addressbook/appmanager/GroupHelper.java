@@ -65,6 +65,15 @@ public class GroupHelper extends HelperBase {
     submitGroupCreation();
     returnToGroupPage();
   }
+
+  public void modifyGroup(int index, GroupData group) {
+   selectGroup(index);
+   initGroupModification();
+   fillGroupForm(group);
+   submitGroupModification();
+  // app.getNavigationHelper().gotoGroupPage()
+   returnToGroupPage();
+  }
 // Метод проверяет, есть ли элемент  выбора  на странице ( есть ли группы)
   public boolean isThereAGroup() {
     return  isElementPresent(By.name("selected[]"));

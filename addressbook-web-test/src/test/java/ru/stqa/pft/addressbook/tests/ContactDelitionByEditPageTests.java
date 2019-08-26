@@ -9,7 +9,7 @@ import java.util.List;
 
 public class ContactDelitionByEditPageTests extends TestBase {
 
-  @Test
+  @Test (enabled = false)
   // Тест удаляет  контакт нажатием удаления на стр. редактирвоания
   public void testContactDelitionByEditPage ()
   {

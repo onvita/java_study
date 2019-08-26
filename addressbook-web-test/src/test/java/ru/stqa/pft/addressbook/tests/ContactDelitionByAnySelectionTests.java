@@ -11,7 +11,7 @@ import org.openqa.selenium.WebDriver;
 
 public class ContactDelitionByAnySelectionTests extends TestBase{
 
-  @Test
+  @Test (enabled = false)
   // Тест удаляет из списка контактов один выбранный контакт
 
   public void testContactDelitionByAnySelection()

@@ -11,7 +11,7 @@ import java.util.List;
 
 public class ContactEditTests extends TestBase {
 
-  @Test
+  @Test (enabled = false)
   // Тест проверяет редактирование контакта через форму редактирования, переход к которой осуществляется
   // непосредственно из списка контактов нажатием кнопки Edit
 

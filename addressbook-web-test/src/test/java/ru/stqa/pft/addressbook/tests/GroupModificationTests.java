@@ -16,7 +16,7 @@ public class GroupModificationTests extends TestBase {
     app.goTo().groupPage();
     // Перед выбором группы  проверяем, есль ли группа, если нет - то вызываем созданеи группы
     if (app.group().list().size() ==0) {
-      app.group().crate(new GroupData("test31", null, null)); }
+      app.group().crate(new GroupData().withName("Test1")); }
   }
 
   @Test
@@ -25,7 +25,8 @@ public class GroupModificationTests extends TestBase {
 
     List<GroupData> before=app.group().list();
     int index = before.size()-1;
-    GroupData group =new GroupData(before.get(index).getId(),"test2222", "test12is", "test13is");
+    GroupData group =new GroupData()
+            .withId(before.get(index).getId()).withName("test2222").withHeader("test12is").withFooter("test13is");
 
     // Модифицируем
     app.group().modify(index, group);

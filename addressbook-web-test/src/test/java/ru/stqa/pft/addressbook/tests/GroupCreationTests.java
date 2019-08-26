@@ -16,7 +16,7 @@ public class GroupCreationTests extends TestBase {
 
     List<GroupData> before=app.group().list();     // before и after - будут содержать список элементов- список объектов типа GroupData
 
-    GroupData group = new GroupData("test44", null, null);
+    GroupData group = new GroupData().withName("Test2");
     app.group().crate(group);
     List<GroupData> after=app.group().list();
     Assert.assertEquals(after.size(), before.size() + 1 ); // сравниваем размер списков до и после добавления

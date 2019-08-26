@@ -14,7 +14,7 @@ public class GroupDeletionTests extends TestBase {
     app.goTo().groupPage();
     // Перед выбором группы  проверяем, есль ли группа, если нет - то вызываем созданеи группы
     if (app.group().list().size() ==0) {
-        app.group().crate(new GroupData("test31", null, null)); }
+        app.group().crate(new GroupData().withName("Test1")); }
   }
 
   @Test

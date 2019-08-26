@@ -17,26 +17,32 @@ public class ContactDelitionByAnySelectionTests extends TestBase{
   public void testContactDelitionByAnySelection()
   {
     app.getNavigationHelper().gotoHomePage();
+
       // Перед выбором контакта  проверяем, есль ли контакт
       if (! app.getContactHelper().isThereAContact()) { //  если нет - то вызываем созданеи контакта
         app.getContactHelper().crateContact(new ContactData("Basy", "", "Antonov", "strit", "334-44-44", "+7 444-444-44-44", "" , "ссс@mail.ru", "", "", "test2222"), true);
       }
 
+    // запомнить старый список
     List<ContactData> before =app.getContactHelper().getContactList();
 
-      // и только после этого выбираем контакт из списка и удаляем
+      // Выбираем из списка контакт и удаляем
     app.getContactHelper().selectContactInList(before.size()-1);
     app.getContactHelper().submitContactDelite();
     app.closeAlertOk();
+
+    // Ждем сообщения об удалении и переходим на главную
     app.waitMessage();
     app.getNavigationHelper().gotoHomePage();
 
 
-
+    // Запоминаем новый список
     List<ContactData> after=app.getContactHelper().getContactList();
 
+    // Сравниваем количество
     Assert.assertEquals(after.size(), before.size()-1);
 
+    // Убираем из старого удаленный элемент и сравниваем содержимое списков
     before.remove(before.size()-1);
     Assert.assertEquals(before, after);
 

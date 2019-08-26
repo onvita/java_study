@@ -52,8 +52,8 @@ public class ContactHelper  extends HelperBase{
   }
 
   // Нажатие кнопки редактирования для контакта (переход на страницу релактирования соответсвующего контакта из списка контактов)
-  public void submitContaktEdit() {
-    click(By.xpath("(//img[@alt='Edit'])[1]"));
+  public void submitContaktEdit(int index) {
+    click(By.xpath("(//img[@alt='Edit'])["+index+"]"));
   }
 // Подтверждение редактирования контакта ( нажатие кнопки Update на стр. редактирования контакта)
   public void submitContactUpdate() {
@@ -118,8 +118,6 @@ public class ContactHelper  extends HelperBase{
     for (WebElement element: elements) {                                 // element  пробегает по списку elements
       int id=Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id")); // достаем ид
       String firstname =element.findElement(By.xpath(".//td[2]")).getText();
-
-      //String firstname =element.findElement(By.tagName("/td[2]")).getText();
       String lastname =element.findElement(By.xpath(".//td[3]")).getText();
 
       //  создаем объект типа ContactData, сравнение будет по ид и имени, поэтому уже в спсике другие данные

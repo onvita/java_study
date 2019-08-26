@@ -117,8 +117,8 @@ public class ContactHelper  extends HelperBase{
    // нужно по элементам пройти в цикле и выполнить действия
     for (WebElement element: elements) {                                 // element  пробегает по списку elements
       int id=Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id")); // достаем ид
-      String firstname =element.findElement(By.xpath(".//td[2]")).getText();
-      String lastname =element.findElement(By.xpath(".//td[3]")).getText();
+      String  lastname=element.findElement(By.xpath(".//td[2]")).getText();
+      String  firstname=element.findElement(By.xpath(".//td[3]")).getText();
 
       //  создаем объект типа ContactData, сравнение будет по ид и имени, поэтому уже в спсике другие данные
       // объекта ContactData не нужны, их выставляем null

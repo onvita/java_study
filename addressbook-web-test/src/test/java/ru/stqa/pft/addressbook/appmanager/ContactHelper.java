@@ -10,6 +10,7 @@ import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class ContactHelper  extends HelperBase{
   //
@@ -108,15 +109,18 @@ public class ContactHelper  extends HelperBase{
 
   // Метод находит на стр. контакты и создает соответсвующий список
   public List<ContactData> getContactList() {
+
     // создаем список, который будем заполнять
     List<ContactData> contacts=new ArrayList<ContactData>(); // ArrayList - т.к нужно указать конкретный класс, который реализует интерфейс List
    // получаем список объектов типа вебэлемент
     List<WebElement> elements =wd.findElements(By.name("entry")); // найти все элементы, которые имеют name("entry")
    // нужно по элементам пройти в цикле и выполнить действия
     for (WebElement element: elements) {                                 // element  пробегает по списку elements
-      String firstname =element.findElement(By.tagName("td[2]")).getText();
-      String lastname =element.findElement(By.tagName("td[3]")).getText();
       int id=Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("id")); // достаем ид
+      String firstname =element.findElement(By.xpath(".//td[2]")).getText();
+
+      //String firstname =element.findElement(By.tagName("/td[2]")).getText();
+      String lastname =element.findElement(By.xpath(".//td[3]")).getText();
 
       //  создаем объект типа ContactData, сравнение будет по ид и имени, поэтому уже в спсике другие данные
       // объекта ContactData не нужны, их выставляем null

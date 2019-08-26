@@ -1,5 +1,6 @@
 package ru.stqa.pft.addressbook.appmanager;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -30,7 +31,7 @@ public class ApplicationManager {
     }
 
 
-    wd.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+    wd.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
     wd.get("http://localhost/addressbook/");
     groupHelper = new GroupHelper(wd);
     navigationHelper = new NavigationHelper(wd);
@@ -47,7 +48,9 @@ public class ApplicationManager {
  {
   wd.switchTo().alert().accept();
   }
-
+  public void waitMessage ()
+   {     wd.findElement(By.cssSelector("div.msgbox"));
+  }
    public GroupHelper getGroupHelper() {
     return groupHelper;
   }

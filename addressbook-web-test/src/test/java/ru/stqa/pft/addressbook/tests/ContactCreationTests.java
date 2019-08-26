@@ -9,7 +9,7 @@ public class ContactCreationTests extends TestBase {
   @Test
   public void testContactCreation() throws Exception {
     app.getNavigationHelper().gotoHomePage();
-    app.getContactHelper().crateContact(new ContactData("Antoneee", "", "Antonov", "strit", "334-44-44", "+7 444-444-44-44", "" , "ссс@mail.ru", "", "", "test11is"), true);
+    app.getContactHelper().crateContact(new ContactData("Antoneee", "", "Antonov", "strit", "334-44-44", "+7 444-444-44-44", "" , "ссс@mail.ru", "", "", "test2222"), true);
   }
 
 

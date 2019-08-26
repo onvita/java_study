@@ -7,7 +7,9 @@ import org.openqa.selenium.WebElement;
 import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class GroupHelper extends HelperBase {
 
@@ -97,6 +99,24 @@ public class GroupHelper extends HelperBase {
  // создаем список, который будем заполнять
     List<GroupData> groups=new ArrayList<GroupData>(); // ArrayList - т.к нужно указать конкретный класс, который реализует интерфейс List
 // получаем список объектов типа вебэлемент
+    List<WebElement> elements =wd.findElements(By.cssSelector("span.group")); // найти все элементы, которые имеют тег span и класс   group
+// нужно по элементам пройти в цикле и выполнить действия
+    for (WebElement element: elements) {                                 // element  пробегает по списку elements
+      String name =element.getText();                                    // из каждого получаем текст - имя группы
+      int id=Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value")); // достаем ид
+      groups.add(new GroupData().withId(id).withName(name));                                                 // добавляем созданный объект в список
+    }
+
+
+    return  groups; // Метод вернет список групп
+
+  }
+
+  // Метод находит на стр. группы и создает соответсвующий список групп
+  public Set<GroupData> all() {
+    // создаем список, который будем заполнять
+    Set<GroupData> groups=new HashSet<GroupData>();
+    // получаем список объектов типа вебэлемент
     List<WebElement> elements =wd.findElements(By.cssSelector("span.group")); // найти все элементы, которые имеют тег span и класс   group
 // нужно по элементам пройти в цикле и выполнить действия
     for (WebElement element: elements) {                                 // element  пробегает по списку elements

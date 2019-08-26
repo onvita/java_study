@@ -6,32 +6,34 @@ import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
 
 
 public class GroupCreationTests extends TestBase {
 
   @Test
   public void testGroupCreation() throws Exception {
+
     app.goTo().groupPage();
-
-    List<GroupData> before=app.group().list();     // before и after - будут содержать список элементов- список объектов типа GroupData
-
+    // Сохраняем старое множество
+    Set<GroupData> before=app.group().all();
+    // Создаем новую группу
     GroupData group = new GroupData().withName("Test2");
     app.group().crate(group);
-    List<GroupData> after=app.group().list();
-    Assert.assertEquals(after.size(), before.size() + 1 ); // сравниваем размер списков до и после добавления
+    // Сохраняем новое множество
+    Set<GroupData> after=app.group().all();
+    // сравниваем размер множеств до и после добавления
+    Assert.assertEquals(after.size(), before.size() + 1 );
 
-
-    // меняем старый список - добавляем новое
+    // добавленной группе присваиваем идентификатор (withId) и добавляем группу в старое множество
+    group.withId(after.stream().mapToInt((g)->g.getId()).max().getAsInt());
     before.add(group);
+                        // берем коллекцию содержащую группы с известным идентиыикатором (after),  превращаем ее в поток stream()
+                        // поток GroupData преобразуем в поток целых чисел (mapToInt)
+                        // анонимная функция, последовательно применяется к элементам потока и каждый из них преобразовывается в число ((g)->g.getId())
 
-    // Сортируем оба списка
-    Comparator<? super GroupData> byId=(g1,g2)->Integer.compare(g1.getId(), g2.getId());
-    before.sort(byId);
-    after.sort(byId);
-    // сравниваем списки напрямую, т.к. они оба упорядочены одинаково
+    // сравниваем множества (элнменты множества уникальны, т.к. сравниваются и по ид тоже)
     Assert.assertEquals(before, after);
-
 
   }
 

@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.List;
+import java.util.Set;
 
 public class GroupDeletionTests extends TestBase {
 
@@ -20,10 +21,10 @@ public class GroupDeletionTests extends TestBase {
   @Test
   public void testGroupDeletion() throws Exception {
 
-    List<GroupData> before=app.group().list();
+    Set<GroupData> before=app.group().all();
     int index=before.size()-1;
     app.group().delete(index);
-    List<GroupData> after=app.group().list();
+    Set<GroupData> after=app.group().all();
     // сравниваем количество
     Assert.assertEquals(after.size(), before.size() - 1 );
     // перед сравнением списков из старого нужно удалить удаленный в тесте элемент, по индексу

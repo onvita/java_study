@@ -3,7 +3,6 @@ package ru.stqa.pft.addressbook.tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
-import ru.stqa.pft.addressbook.model.GroupData;
 
 
 import java.util.Comparator;
@@ -16,7 +15,7 @@ public class ContactEditTests extends TestBase {
   // непосредственно из списка контактов нажатием кнопки Edit
 
   public void testContactEdit ()
-  {  app.getNavigationHelper().gotoHomePage();
+  {  app.goTo().gotoHomePage();
     // Перед выбором контакта  проверяем, есль ли контакт
     if (! app.getContactHelper().isThereAContact()) { //  если нет - то вызываем созданеи контакта
       app.getContactHelper().crateContact(new ContactData("Basy", "", "Antonov", "strit", "334-44-44", "+7 444-444-44-44", "" , "ссс@mail.ru", "", "", "test11is"), true);

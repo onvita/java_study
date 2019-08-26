@@ -13,7 +13,7 @@ public class ContactDelitionByEditPageTests extends TestBase {
   // Тест удаляет  контакт нажатием удаления на стр. редактирвоания
   public void testContactDelitionByEditPage ()
   {
-    app.getNavigationHelper().gotoHomePage();
+    app.goTo().gotoHomePage();
       // Перед выбором контакта  проверяем, есль ли контакт
     if (! app.getContactHelper().isThereAContact()) { //  если нет - то вызываем созданеи контакта
         app.getContactHelper().crateContact(new ContactData("Basy", "", "Antonov", "strit", "334-44-44", "+7 444-444-44-44", "" , "ссс@mail.ru", "", "", "test11is"), true);
@@ -28,7 +28,7 @@ public class ContactDelitionByEditPageTests extends TestBase {
 
     // Ждем сообщения об удалении и переходим на главную
     app.waitMessage();
-    app.getNavigationHelper().gotoHomePage();
+    app.goTo().gotoHomePage();
 
     // Запоминаем новый список
     List<ContactData> after=app.getContactHelper().getContactList();

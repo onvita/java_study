@@ -59,20 +59,26 @@ public class GroupHelper extends HelperBase {
   }
 
   // Метод создания группы
-  public void crateGroup(GroupData group) {
+  public void crate(GroupData group) {
     initGroupCreation();
     fillGroupForm(group);
     submitGroupCreation();
     returnToGroupPage();
   }
 
-  public void modifyGroup(int index, GroupData group) {
+  public void modify(int index, GroupData group) {
    selectGroup(index);
    initGroupModification();
    fillGroupForm(group);
    submitGroupModification();
-  // app.getNavigationHelper().gotoGroupPage()
+  // app.goTo().groupPage()
    returnToGroupPage();
+  }
+
+  public void delete(int index) {
+    selectGroup(index);
+    deleteSelectedGroups();
+    returnToGroupPage();
   }
 // Метод проверяет, есть ли элемент  выбора  на странице ( есть ли группы)
   public boolean isThereAGroup() {
@@ -87,7 +93,7 @@ public class GroupHelper extends HelperBase {
   }
 
   // Метод находит на стр. группы и создает соответсвующий список групп
-  public List<GroupData> getGroupList() {
+  public List<GroupData> list() {
  // создаем список, который будем заполнять
     List<GroupData> groups=new ArrayList<GroupData>(); // ArrayList - т.к нужно указать конкретный класс, который реализует интерфейс List
 // получаем список объектов типа вебэлемент

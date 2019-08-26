@@ -14,7 +14,7 @@ public class ContactModificationTests extends TestBase {
   // со страницы просмотра контакта,нажатием кнопки Modify
   public void testContactModification ()
   {
-   app.getNavigationHelper().gotoHomePage();
+   app.goTo().gotoHomePage();
 
     // Перед выбором контакта  проверяем, есль ли контакт
     if (! app.getContactHelper().isThereAContact()) { //  если нет - то вызываем созданеи контакта

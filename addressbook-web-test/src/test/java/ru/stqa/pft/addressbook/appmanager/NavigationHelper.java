@@ -13,8 +13,8 @@ public class NavigationHelper extends HelperBase{
   }
 
   // Метода для перехода на стр. групп
-  public void gotoGroupPage() {
-    //  Выходим из метода  gotoGroupPage если выполнятся условия
+  public void groupPage() {
+    //  Выходим из метода  groupPage если выполнятся условия
     if (isElementPresent(By.tagName("h1"))   // На странице найден эленент h1
         && wd.findElement(By.tagName("h1")).getText().equals ("Groups") // и  значение текста его равно  "Groups"
         && isElementPresent(By.name("new"))) { //  И есть элемент с названием "new"

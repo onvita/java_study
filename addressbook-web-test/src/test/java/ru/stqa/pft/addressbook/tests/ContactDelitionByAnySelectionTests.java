@@ -1,13 +1,10 @@
 package ru.stqa.pft.addressbook.tests;
 
-import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
-import java.util.concurrent.TimeUnit;
 
 import java.util.List;
-import org.openqa.selenium.WebDriver;
 
 public class ContactDelitionByAnySelectionTests extends TestBase{
 
@@ -16,7 +13,7 @@ public class ContactDelitionByAnySelectionTests extends TestBase{
 
   public void testContactDelitionByAnySelection()
   {
-    app.getNavigationHelper().gotoHomePage();
+    app.goTo().gotoHomePage();
 
       // Перед выбором контакта  проверяем, есль ли контакт
       if (! app.getContactHelper().isThereAContact()) { //  если нет - то вызываем созданеи контакта
@@ -33,7 +30,7 @@ public class ContactDelitionByAnySelectionTests extends TestBase{
 
     // Ждем сообщения об удалении и переходим на главную
     app.waitMessage();
-    app.getNavigationHelper().gotoHomePage();
+    app.goTo().gotoHomePage();
 
 
     // Запоминаем новый список

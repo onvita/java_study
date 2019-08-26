@@ -3,8 +3,10 @@ package ru.stqa.pft.addressbook.tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.GroupData;
 
 
+import java.util.Comparator;
 import java.util.List;
 
 public class ContactEditTests extends TestBase {
@@ -37,5 +39,17 @@ public class ContactEditTests extends TestBase {
 
     // Сравниваем количество
     Assert.assertEquals(after.size(), before.size());
+
+    // Меняем старый список - удаляем старое значение, добавляем новое
+    before.remove(before.size()-1);
+    before.add(contact);
+
+    // Сортируем оба списка
+    Comparator<? super ContactData> byId=(g1, g2)->Integer.compare(g1.getId(), g2.getId());
+    before.sort(byId);
+    after.sort(byId);
+
+    // сравниваем списки напрямую, т.к. они оба упорядочены одинаково
+    Assert.assertEquals(before, after);
   }
 }

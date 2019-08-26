@@ -66,8 +66,8 @@ public class ContactHelper  extends HelperBase{
   }
 
   // Метод перехода на страницу просмотра контакта, нажатием кнопки просмотр (или детально) в списке контактов
-  public void gotoContaktViewPage() {
-    click(By.xpath("(//img[@alt='Details'])[1]"));
+  public void gotoContaktViewPage(int index) {
+    click(By.xpath("(//img[@alt='Details'])["+index+"]"));
   }
 
   // Переход к странице модификации контакта ( нажатие кнопки Modify на стр. просмотра контакта)

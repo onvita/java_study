@@ -45,12 +45,18 @@ public class GroupHelper extends HelperBase {
     click(By.name("delete"));
   }
 
-  //Метод Выбрать группу произвольную
+  //Метод Выбрать группу произвольную по индексу
   public void selectGroup(int index) {
     // click(By.name("selected[]")); до добавления индекса было так, но правильнее работать со списком элементов
     // Находим все элементы по локатору By.name("selected[]"), среди них выбираем нужный по индексу и по этому элементу выполнить клик
     wd.findElements(By.name("selected[]")).get(index).click();
   }
+  //Метод Выбрать группу по ид
+  public void selectGroupById(int id) {
+    // Находим элемент  у которого тег input, у него атрибут value = ид  и  по нему кликаем
+    wd.findElement(By.cssSelector("input[value='"+ id + "']")).click();
+  }
+
 
   public void initGroupModification() {
     click(By.name("edit"));
@@ -68,20 +74,28 @@ public class GroupHelper extends HelperBase {
     returnToGroupPage();
   }
 
-  public void modify(int index, GroupData group) {
-   selectGroup(index);
+  public void modify(GroupData group) {
+   selectGroupById(group.getId());
    initGroupModification();
    fillGroupForm(group);
    submitGroupModification();
   // app.goTo().groupPage()
    returnToGroupPage();
   }
-
+// "Старый" метод удаления, выбирает по порядковому номеру ( можно удалять из списков, но не из множества)
   public void delete(int index) {
     selectGroup(index);
     deleteSelectedGroups();
     returnToGroupPage();
   }
+  // Второй метод удаления, выбирает по ид. ( можно удалять из неупорядоченного множества)
+  public void delete(GroupData Group) {
+    selectGroupById(Group.getId()); // метод по ид группы выбирает нужный на странице
+    deleteSelectedGroups(); // и удаляет ( кнопка удалить)
+    returnToGroupPage();
+  }
+
+
 // Метод проверяет, есть ли элемент  выбора  на странице ( есть ли группы)
   public boolean isThereAGroup() {
     return  isElementPresent(By.name("selected[]"));
@@ -129,4 +143,6 @@ public class GroupHelper extends HelperBase {
     return  groups; // Метод вернет список групп
 
   }
+
+
 }

@@ -20,15 +20,18 @@ public class GroupDeletionTests extends TestBase {
 
   @Test
   public void testGroupDeletion() throws Exception {
-
+    // Возвращаем множество элементов до удаления
     Set<GroupData> before=app.group().all();
-    int index=before.size()-1;
-    app.group().delete(index);
+    // Выбираем группу для удаления, перебираем список через итератор и  получм некий элемент, не обязательно последний
+    GroupData deliteGroup = before.iterator().next();
+    // Удаляем группу, сохраненную в deliteGroup
+    app.group().delete(deliteGroup);
+    // Возвращаем множество элементов после удаления
     Set<GroupData> after=app.group().all();
     // сравниваем количество
     Assert.assertEquals(after.size(), before.size() - 1 );
     // перед сравнением списков из старого нужно удалить удаленный в тесте элемент, по индексу
-    before.remove(index);
+    before.remove(deliteGroup);
     Assert.assertEquals(before, after);
   }
 
